@@ -3,7 +3,7 @@
 const ItemListContainer = ({ armazones, lentesSol, productosLimpieza, accesorios }) => {
     return (
         <div>
-            <h1 className="itemListBG">En este List Container irán alojadalas CARDS con los productos de la tienda, que son: {armazones}{lentesSol}, {productosLimpieza} y {accesorios}</h1>
+            <h1 className="itemListBG">Hola! En este List Container irán alojadalas CARDS con los productos de la tienda, que son: {armazones},{lentesSol}, {productosLimpieza} y {accesorios}</h1>
         </div>
 
 
