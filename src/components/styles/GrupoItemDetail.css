@@ -1,0 +1,22 @@
+.grupoDetail{
+    margin: 3rem;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+.cuerpoCard{
+    padding: 5px;
+    margin: 1rem;
+}
+
+.titleDetail{
+    font-size: 28px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+}
+.textPrice{
+    font-size: 30px;
+    font-weight: 600;
+}

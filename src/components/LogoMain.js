@@ -1,8 +1,12 @@
 import logo from '../assets/images/logooptica.png';
+import { Link } from 'react-router-dom';
 
-const LogoMain=()=>{
-    return(
-        <img className='logoOptica' src={logo} alt="logo"/>
+const LogoMain = () => {
+    return (
+
+        <Link to={'/'}>
+            <img className='logoOptica' src={logo} alt="logo" />
+        </Link>
     )
 }
 

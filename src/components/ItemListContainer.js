@@ -1,13 +1,31 @@
-//Dentro del ItemListContainer se ubicarán las cards de productos. En la idea original, irán debajo de un slide de imágenes con anuncios!
 
-const ItemListContainer = ({ armazones, lentesSol, productosLimpieza, accesorios }) => {
+import { useEffect, useState } from 'react';
+import ItemList from './ItemList';
+
+
+const ItemListContainer = () => {
+
+    const [productos, setProductos] = useState([]);
+
+    useEffect(() => {
+        fetch(`https://638fa3d09cbdb0dbe32d7634.mockapi.io/catalogo/catalogo`)
+            .then((resp) => resp.json())
+            .then((resp) => {
+                setProductos(resp)
+            })
+            .catch((error) => {
+                console.error("Error de request: ", error)
+            })
+    }, [])
+
     return (
-        <div>
-            <h1 className="itemListBG">Hola! En este List Container irán alojadalas CARDS con los productos de la tienda, que son: {armazones},{lentesSol}, {productosLimpieza} y {accesorios}</h1>
+        <div className="container-fluid bg-container">
+            <div className='row grupoItemListContainer'>
+                <ItemList
+                    productos={productos} />
+            </div>
         </div>
-
-
-    )
-
+    );
 }
+
 export default ItemListContainer;

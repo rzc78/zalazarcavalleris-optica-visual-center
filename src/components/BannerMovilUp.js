@@ -1,4 +1,4 @@
-import './BannerMovilUp.css';
+import '../components/styles/BannerMovilUp.css';
 
 const BannerMovilUp=()=>{
     return(
