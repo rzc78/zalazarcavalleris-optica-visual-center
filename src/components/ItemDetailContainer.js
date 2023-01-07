@@ -13,7 +13,6 @@ const ItemDetailContainer = () => {
             .then((resp) => resp.json())
             .then((resp) => {
                 setDetalleItem(resp)
-                console.log("recibe", resp)
             })
             .catch((error) => {
                 console.error(error)
@@ -22,10 +21,10 @@ const ItemDetailContainer = () => {
 
     return (
 
-            <ItemDetail
-                producto={detalleItem}
-            />
-        )
+        <ItemDetail
+            producto={detalleItem}
+        />
+    )
 
 
 

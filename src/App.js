@@ -4,18 +4,24 @@ import BannerMovilUp from './components/BannerMovilUp';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import CartProvider from './components/context/CartProvider'
+import Cart from './components/CartContainer'
 
 function App() {
     return (
-        <BrowserRouter>
-            <BannerMovilUp/>
-            <NavBar/>
+        <CartProvider>
+            <BrowserRouter>
+                <BannerMovilUp />
+                <NavBar />
                 <Routes>
-                    <Route exact path="/" element={<ItemListContainer/>}/>
-                    <Route path="/category/:id" element={<ItemListContainer/>}/>
-                    <Route path="/item/:id" element={<ItemDetailContainer/>}/>
+                    <Route exact path="/" element={<ItemListContainer />} />
+                    <Route path="/category/:id" element={<ItemListContainer />} />
+                    <Route path="/item/:id" element={<ItemDetailContainer />} />
+                    <Route path="/:cart" element={<Cart />} />
                 </Routes>
-        </BrowserRouter>
+            </BrowserRouter>
+        </CartProvider>
+
     );
 }
 

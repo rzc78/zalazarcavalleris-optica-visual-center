@@ -1,13 +1,11 @@
 import React from 'react';
 // import Link from 'react-router-dom';
 import '../components/styles/GrupoItemDetail.css'
+import ItemCount from './ItemCount'
 
 const ItemDetail = ({ producto }) => {
 
-    console.log("llega?", producto)
-
-    //Estuve horas intentando resolver un error que me daba consola cuando llamaba a cada key del array del producto, lo que no me permitía renderizar el componente. Finalmente encontré algo de encadenamiento opcional, que funciona con el operador ?, aunque no lo termino de entender del todo. De esta forma se solucionó
-
+    
     return (
         <div className="card mb-3 grupoDetail" style={null}>
             <div className="row g-0">
@@ -24,6 +22,17 @@ const ItemDetail = ({ producto }) => {
                         </p>
                         <small className="text-muted"> El precio expresado es para consumidor final, IVA incluído</small>
                     </div>
+                    <span>
+                        <ItemCount
+                            description={producto?.description}
+                            stock={producto?.stock}
+                            img={producto?.img}
+                            name={producto?.name}
+                            price={producto?.price}
+                            initial={1}
+                            id={producto?.id}
+                        />
+                    </span>
                 </div>
             </div>
         </div>
