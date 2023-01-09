@@ -1,12 +1,13 @@
 
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import CartContext from './context/CartContext';
 
 const Cart = ({ cantidad, name, description, img, price, id }) => {
 
-    const {deleteProduct, isInCart}=useContext(CartContext);
+    //Importaciones desde CartContext: función de eliminar producto
+    const { deleteProduct } = useContext(CartContext);
 
-    isInCart(id)
+    // isInCart(id)
 
     return (
         <tr>
@@ -14,7 +15,7 @@ const Cart = ({ cantidad, name, description, img, price, id }) => {
             <td>{name}</td>
             <td>{description}</td>
             <td>{price}</td>
-            <td><button onClick={()=>deleteProduct(id)}>Eliminar</button></td>
+            <td><button onClick={() => deleteProduct(id)}>Eliminar</button></td>
         </tr>
 
     )

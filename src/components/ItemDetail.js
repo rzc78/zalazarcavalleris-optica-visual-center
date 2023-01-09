@@ -1,11 +1,19 @@
-import React from 'react';
-// import Link from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import '../components/styles/GrupoItemDetail.css'
+import CartContext from './context/CartContext';
 import ItemCount from './ItemCount'
 
 const ItemDetail = ({ producto }) => {
 
-    
+    const [irAlCarrito, setIrAlCarrito] = useState(false)
+    const { agregarProducto } = useContext(CartContext);
+
+    const onAdd = (cantidad) => {
+        setIrAlCarrito(true)
+        agregarProducto(producto, cantidad)
+    }
+
     return (
         <div className="card mb-3 grupoDetail" style={null}>
             <div className="row g-0">
@@ -23,23 +31,13 @@ const ItemDetail = ({ producto }) => {
                         <small className="text-muted"> El precio expresado es para consumidor final, IVA incluído</small>
                     </div>
                     <span>
-                        <ItemCount
-                            description={producto?.description}
-                            stock={producto?.stock}
-                            img={producto?.img}
-                            name={producto?.name}
-                            price={producto?.price}
-                            initial={1}
-                            id={producto?.id}
-                        />
+                        {irAlCarrito ? <Link to='/cart' className="botonCart">TerminarCompra</Link> : <ItemCount stock={producto?.stock} initial={1} onAdd={onAdd} />}
                     </span>
                 </div>
             </div>
         </div>
 
     )
-
-
 }
 
 export default ItemDetail

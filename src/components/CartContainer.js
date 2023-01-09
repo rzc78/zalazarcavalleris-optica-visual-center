@@ -2,54 +2,52 @@
 import React from 'react';
 import CartContext from './context/CartContext';
 import CartList from './CartList'
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 const CartContainer = () => {
 
-    const [totalProductos, setTotalProductos] = useState(0)
-    const { cart, clearCart } = useContext(CartContext)
+    const { cart, clearCart, calcularPrecioTotal } = useContext(CartContext);
 
-    useEffect(() => {
-        setTotalProductos(cart.reduce((acc, item) => {
-            return acc += item.priceProd * item.cantidadSeleccionada
-        }, 0));
-    }, [cart]);
+    //Condicional para que renderice mensaje si el carrito está vacío, o de lo contrario que muestre el componente CartList con los productos.
 
-    console.log("suma", totalProductos)
+    if (cart.length === 0) {
+        return (
+            <div>
+                <h1>NO HAY ELEMENTOS EN EL CARRITO, VAMOS A COMPRAR!</h1>
+                <Link to='/'>Ir a la tienda</Link>
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Detalle</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Quitar del carrito</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <CartList />
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col">Total:</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">${calcularPrecioTotal()}</th>
 
-    return (
-        <div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Detalle</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Quitar del carrito</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <CartList />
-                </tbody>
-                <thead>
-                    <tr>
-                        <th scope="col">Total:</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col">${totalProductos}</th>
-
-                    </tr>
-                </thead>
-            </table>
-            <button onClick={clearCart}>Vaciar Carrito</button>
-            <button>Finalizar Compra</button>
-
-        </div>
-
-
-
-    )
-
+                        </tr>
+                    </thead>
+                </table>
+                <button onClick={clearCart}>Vaciar Carrito</button>
+                <button>Finalizar Compra</button>
+            </div>
+        )
+    }
 }
 export default CartContainer;

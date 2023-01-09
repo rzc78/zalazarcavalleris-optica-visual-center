@@ -11,6 +11,7 @@ const ItemList = (props) => {
                 img={e.img}
                 price={e.price}
                 id={e.id}
+                
             />)
 
         )

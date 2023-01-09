@@ -17,8 +17,8 @@ const NavBar = () => {
                     <div className="navbar-nav textoNavBar">
                         <Link to={"/"} className="nav-link txtNav">Home</Link>
                         <Link to={"/category/:categoryId"} className="nav-link txtNav">Tienda</Link>
-                        <a className="nav-link txtNav" href="#index">Sucursal</a>
-                        <a className="nav-link txtNav" href="#index">FAQs</a>
+                        <span className="nav-link txtNav" href="#index">Sucursal</span>
+                        <span className="nav-link txtNav" href="#index">FAQs</span>
                     </div>
                 </div>
                 <div>
