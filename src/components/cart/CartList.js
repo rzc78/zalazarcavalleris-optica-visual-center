@@ -1,6 +1,6 @@
 
 import React from 'react';
-import CartContext from './context/CartContext';
+import CartContext from '../context/CartContext';
 import Cart from './Cart'
 import { useContext } from 'react';
 
@@ -17,6 +17,7 @@ const CartList = () => {
                 img={el.img}
                 price={el.price}
                 id={el.id}
+
             />)
     )
 }

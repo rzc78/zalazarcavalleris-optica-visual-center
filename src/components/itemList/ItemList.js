@@ -1,4 +1,4 @@
-import Item from "./Item"
+import Item from "../itemDetail/Item"
 
 const ItemList = (props) => {
 
@@ -11,7 +11,6 @@ const ItemList = (props) => {
                 img={e.img}
                 price={e.price}
                 id={e.id}
-                
             />)
 
         )

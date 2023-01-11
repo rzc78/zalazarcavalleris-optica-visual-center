@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ButtonsSmall from './Buttons/Buttons';
+import ButtonsSmall from '../Buttons/Buttons';
 import { useState, useEffect } from "react";
 
 
@@ -7,6 +7,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
     let [count, setCount] = useState(parseInt(initial))
 
+    //Al montaje inicial, siempre se carga el valor inicial del contador en 1
     useEffect(() => {
         setCount(parseInt(initial))
     }, [initial])
@@ -21,35 +22,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         setCount(count-1);
 
     };
-
-    //Funciones de aumento y disminución de ítems
-    // let agregarProducto = () => {
-    //     count < cantidadStock ? setCount(++count) : setCount(cantidadStock);
-    // }
-    // let quitarProducto = () => {
-    //     count > 1 ? setCount(--count) : setCount(1);
-    // }
-
-    //Función de agregar productos al Carro utilizando el método push, cargando la propiedad al array vacio que está en el context
-    // const onAddCarrito = () => {
-    //     if (count >= 1) { //¿¿Acá se puede poner una condicional para que diga que no hay el stock requerido?? ||
-    //         let cantidadSeleccionada = count;
-    //         let idProd = id;
-    //         let nombreProd = name;
-    //         let descriptionProd = description;
-    //         let imgProd = img;
-    //         let priceProd = price;
-    //         cart.push({ cantidadSeleccionada, idProd, nombreProd, descriptionProd, imgProd, priceProd })
-
-    //         console.log(cart)
-
-    //     } else {
-    //         alert("Algo anda mal...")
-
-    //     }
-    // }
-
-    //Función para terminar la compra: debe llevar al carro con todos los elementos seleccionados.
 
     return (
         <span className="conjuntoBotonesItemDetail">
@@ -73,8 +45,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
             </div>
         </span>
     )
-
-
 }
 
 export default ItemCount;

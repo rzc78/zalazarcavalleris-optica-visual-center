@@ -1,6 +1,6 @@
 import LogoMain from './LogoMain';
 import CartWidget from './CartWidget';
-import '../components/styles/grupoNavBar.css';
+import '../navbar/grupoNavBar.css';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
@@ -18,7 +18,7 @@ const NavBar = () => {
                         <Link to={"/"} className="nav-link txtNav">Home</Link>
                         <Link to={"/category/:categoryId"} className="nav-link txtNav">Tienda</Link>
                         <span className="nav-link txtNav" href="#index">Sucursal</span>
-                        <span className="nav-link txtNav" href="#index">FAQs</span>
+                        <Link to={"/auth"} className="nav-link txtNav">Iniciar Sesión</Link>
                     </div>
                 </div>
                 <div>

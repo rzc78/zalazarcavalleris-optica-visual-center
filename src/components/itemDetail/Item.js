@@ -1,4 +1,4 @@
-import './styles/grupoItemListContainer.css'
+import '../itemList/grupoItemListContainer.css'
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 

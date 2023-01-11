@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import CartContext from './CartContext';
+import Checkout from '../checkout/Checkout';
 
 const CartProvider = ({ children }) => {
 
@@ -10,7 +11,10 @@ const CartProvider = ({ children }) => {
         const { cantidad = 0 } = cart.find(producto => producto.id === item.id) || {};
         const newCart = cart.filter(producto => producto.id !== item.id);
         setCart([...newCart, { ...item, cantidad: cantidad + nuevaCantidad }])
+        
     };
+
+    console.log("que carga", cart)
 
     //Función para sumar el precio de todos los productos agregados al carrito.
     const calcularPrecioTotal = () => {
@@ -35,8 +39,20 @@ const CartProvider = ({ children }) => {
 
     }
 
+    const mapeoCheckout=()=>{
+        return(
+            cart.map((el) =>
+                <Checkout
+                    cantidad={el.cantidad}
+                    name={el.name}
+                    description={el.description}
+                    price={el.price}
+                />)
+        )
+    }
+
     return (
-        <CartContext.Provider value={{ cart, clearCart, deleteProduct, agregarProducto, calcularPrecioTotal, contadorProductos }}>
+        <CartContext.Provider value={{ cart, mapeoCheckout, clearCart, deleteProduct, agregarProducto, calcularPrecioTotal, contadorProductos }}>
             {children}
         </CartContext.Provider>
     )

@@ -1,22 +1,22 @@
 
 import { useEffect, useState } from 'react';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import ItemList from './ItemList';
 
 
 const ItemListContainer = () => {
 
     const [productos, setProductos] = useState([]);
+    
 
     useEffect(() => {
-        fetch(`https://638fa3d09cbdb0dbe32d7634.mockapi.io/catalogo/catalogo`)
-            .then((resp) => resp.json())
-            .then((resp) => {
-                setProductos(resp)
-            })
-            .catch((error) => {
-                console.error("Error de request: ", error)
-            })
-    }, [])
+        const dataBase = getFirestore();
+        const collectionProd = collection(dataBase, 'products');
+        getDocs(collectionProd)
+            .then(res => setProductos(res.docs.map(item => ({ id: item.id, ...item.data() }))))
+            
+
+    },[]);
 
     return (
         <div className="container-fluid bg-container">

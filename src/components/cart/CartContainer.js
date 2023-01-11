@@ -1,6 +1,6 @@
 
 import React from 'react';
-import CartContext from './context/CartContext';
+import CartContext from '../context/CartContext';
 import CartList from './CartList'
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
@@ -45,7 +45,7 @@ const CartContainer = () => {
                     </thead>
                 </table>
                 <button onClick={clearCart}>Vaciar Carrito</button>
-                <button>Finalizar Compra</button>
+                <Link to='/checkout'>Finalizar Compra</Link>
             </div>
         )
     }

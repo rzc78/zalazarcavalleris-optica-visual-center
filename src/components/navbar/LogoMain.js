@@ -1,4 +1,4 @@
-import logo from '../assets/images/logooptica.png';
+import logo from '../../assets/images/logooptica.png';
 import { Link } from 'react-router-dom';
 
 const LogoMain = () => {
