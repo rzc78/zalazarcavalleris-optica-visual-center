@@ -1,0 +1,62 @@
+.posicionBanner{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.imgForm{
+    width: 100%;
+    height: auto;
+}
+.faq-container{
+    margin: 3rem;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    padding-left: 3rem;
+    line-height: 2rem;
+}
+
+.sucursalImg {
+
+    width: 100%;
+    height: auto;
+  
+  }
+
+.txt-centrado{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+}
+.txt-centrado-main{
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    color: rgb(184, 24, 208);
+    font-family: 'Black Han Sans', sans-serif;
+    font-weight: 400;
+    font-size: 60px;
+
+}
+
+.positionFooter{
+    margin: 0;
+    padding: 6px;
+    font-style: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #5f2b74;
+    font-size: 13px;
+    color: white;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0; 
+}

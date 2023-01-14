@@ -1,0 +1,35 @@
+.checkout-container{
+    margin: 3rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+
+}
+.mapeoCheckoutContainer{
+    margin: 1rem;
+}
+.order-data-container{
+    margin: 3rem;
+
+}
+.textCenter{
+    text-align: center;
+    font-weight: 600;
+}
+
+.idOrderStyle{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: red;
+    
+}
+.brief-position{
+    margin-top: 5rem;
+    display: flex;
+
+}
+.img-position{
+    margin: 3rem;
+    max-width: 60%;
+    height: auto;
+}

@@ -1,10 +1,9 @@
 import React from 'react';
 
-const ButtonsSmall=({disabled, manejador, value})=>{
+const ButtonsSmall = ({ disabled, manejador, value }) => {
 
-    return(
-            <button disabled={disabled} onClick={manejador}type="button" className="btn btn-primary btn-sm">{value}</button>
-        
+    return (
+        <button disabled={disabled} onClick={manejador} type="button" className="btn btn-primary buttonSet">{value}</button>
     )
 
 }

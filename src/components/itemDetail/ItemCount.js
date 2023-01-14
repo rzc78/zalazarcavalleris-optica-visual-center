@@ -7,7 +7,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
     let [count, setCount] = useState(parseInt(initial))
 
-    //Al montaje inicial, siempre se carga el valor inicial del contador en 1
+    //Al montaje inicial, siempre se carga el valor 1 guardado en initial
     useEffect(() => {
         setCount(parseInt(initial))
     }, [initial])

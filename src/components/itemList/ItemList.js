@@ -1,9 +1,9 @@
-import Item from "../itemDetail/Item"
+import Item from "./Item"
 
 const ItemList = (props) => {
-
-        return(
-            props.productos.map((e) =>
+    //Desde ItemListContainer se trae mediante paso de props el array de productos generado, para ser mapeado y renderizado en el componente Item
+    return (
+        props.productos.map((e) =>
             <Item
                 name={e.name}
                 description={e.description}
@@ -13,9 +13,8 @@ const ItemList = (props) => {
                 id={e.id}
             />)
 
-        )
-       
-    }
-  
+    )
+
+}
 
 export default ItemList

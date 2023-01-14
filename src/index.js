@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {initializeApp} from 'firebase/app'
-import { getAuth } from "firebase/auth";
+import { initializeApp } from 'firebase/app'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-//Inicalización y seting de Firebase 
+// Inicalización y seting de Firebase 
 const firebaseConfig = {
   apiKey: "AIzaSyCuXQwYcmEAqrKRbu42wGLBQJpXtPbkBQk",
   authDomain: "proyectoopticavisual.firebaseapp.com",
@@ -19,9 +18,6 @@ const firebaseConfig = {
 }
 
 initializeApp(firebaseConfig);
-getAuth(initializeApp(firebaseConfig))
-
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

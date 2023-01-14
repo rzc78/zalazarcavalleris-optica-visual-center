@@ -1,69 +1,66 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import {addDoc, collection, getFirestore} from 'firebase/firestore';
-
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import CartContext from '../context/CartContext';
+import AuthContext from '../context/AuthContext';
+import './checkout.css';
 
+//Importación de libreria de Toastify para notificaciones push
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CheckoutContainer = () => {
 
-    const { cart, mapeoCheckout, contadorProductos, calcularPrecioTotal, clearCart } = useContext(CartContext);
+    const { cart, mapeoCheckout, contadorProductos, calcularPrecioTotal, clearCartCheckOut } = useContext(CartContext);
+    const { usuario, setIdOrder } = useContext(AuthContext);
 
-    // const [isLoguin, setIsLoguin] = useState(false);
+    //Configuración de emisores de notificación de toastify VACIAR CARRITO
+    const notifyThanks = () => toast.success('¡Gracias por tu compra!', {
+        position: "top-center", autoClose: 3000, hideProgressBar: true, closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored",
+    });
 
-    // useEffect(() => {
-        
-    // }, [isLoguin]);
+    //Constructor de fecha y dia de compra mediante DATE
+    const dateActual = new Date().toLocaleString()
 
 
-//Array y función para guardar los datos del comprador
+    //Array para cargar los datos del comprador y los productos elegidos. Se mapean los arrays con el método map y se cargan a la orden que se enviará por firestore a la colección orders, donde se genera un nuevo documento por cada compra.
     const ordenCompra = {
-        cliente: {
-            nombre: "x",
-            email: "sadsa@das",
-            telefono: 84719748917,
-            direccion: "dasda"
-        },
+        fecha: dateActual,
+        cliente: usuario.map(item => ({ name: item.name, email: item.mail, telefono: item.phone, direccion: item.direccion, ciudad: item.ciudad })),
         items: cart.map(producto => ({ id: producto.id, producto: producto.name, precio: producto.price, cantidad: producto.cantidad })),
         precioTotal: calcularPrecioTotal(),
 
     }
 
-    
-//Función para realizar la compra
-    const handleCompra=()=>{
-        const dataCompra=getFirestore();
-        const ordenCollection= collection(dataCompra, 'orders');
+    //Función manejadora de evento de compra. Realiza el envío de datos a Firestore Database y como response trae el id autogenerado de el nuevo documento con el pedido. Finalmente realiza la limpieza del Cart llamando a la función correspondiente.
+    const handleCompra = () => {
+        const dataCompra = getFirestore();
+        const ordenCollection = collection(dataCompra, 'orders');
         addDoc(ordenCollection, ordenCompra)
-        .then(({id})=>console.log(id))
-        clearCart()
+            .then(({ id }) => setIdOrder(id))
+        clearCartCheckOut()
+        notifyThanks()
 
     }
 
-    // const getDate = () => {
-    //     const time = new Date();
-    //     return `Compra realizada el día ${time.getFullYear()} a las ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
-    //   };
-
-    //   console.log(getDate())
-
     return (
         <div>
-
-            <div>
-                <h5>Estás a punto de generar una orden de compra por: {contadorProductos()}
-                 items</h5>
+            <div className="checkout-container">
+                <h2 className="textCenter">Estás a punto de generar una orden de compra por: {contadorProductos()} items</h2>
                 <div>
                     {mapeoCheckout()}
                 </div>
-                <h3>Total de tu compra: $ {calcularPrecioTotal()}</h3>
-                <h5>Te registraste con estos datos. Tené en cuenta que estos datos son los que utilizaremos para contactarte y enviarte tus productos</h5>
-                <p>Nombre:</p>
-                <p>E-mail:</p>
-                <p>Teléfono:</p>
-                <p>Dirección:</p>
+                <div className="order-data-container">
+                    <h3>Total de tu compra: $ {calcularPrecioTotal()}</h3>
+                    <h5>Te registraste con estos datos. Tené en cuenta que estos datos son los que utilizaremos para contactarte y enviarte tus productos</h5>
+                    <p>Nombre: {(usuario[0].name)}</p>
+                    <p>E-mail: {(usuario[0].mail)}</p>
+                    <p>Teléfono: {(usuario[0].phone)}</p>
+                </div>
 
-                <Link to='/' onClick={handleCompra}>Comprar!</Link>
+
+                <Link to='/brief' onClick={handleCompra}>Comprar!</Link>
+                <ToastContainer />
 
             </div>
         </div>

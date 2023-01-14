@@ -17,8 +17,8 @@ const NavBar = () => {
                     <div className="navbar-nav textoNavBar">
                         <Link to={"/"} className="nav-link txtNav">Home</Link>
                         <Link to={"/category/:categoryId"} className="nav-link txtNav">Tienda</Link>
-                        <span className="nav-link txtNav" href="#index">Sucursal</span>
-                        <Link to={"/auth"} className="nav-link txtNav">Iniciar Sesión</Link>
+                        <Link to={"/sucursal"} className="nav-link txtNav">Sucursal</Link>
+                        <Link to={"/faqs"} className="nav-link txtNav">Preguntas Frecuentes</Link>
                     </div>
                 </div>
                 <div>
